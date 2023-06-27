@@ -90,7 +90,8 @@ las preguntas teóricas en un enlace a un repositorio de Git.
 
     Ejemplo: 
     
-  ```class SimpleMiddleware:
+  ```
+  class SimpleMiddleware:
         def __init__(self, get_response):
             self.get_response = get_response
             # Configuración e inicialización de una sola vez.
