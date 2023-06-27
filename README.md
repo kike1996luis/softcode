@@ -19,6 +19,7 @@ las preguntas teóricas en un enlace a un repositorio de Git.
 # Respuesta a preguntas teóricas
 
 - ¿Qué es Django y cuáles son sus principales características?
+  
     Django es un framework de alto nivel con el lenguaje de programación Python, permite crear sitios webs seguros, mantenibles y escalables.
 
     Entre sus más principales características están:
@@ -76,6 +77,7 @@ las preguntas teóricas en un enlace a un repositorio de Git.
     Las migraciones en Django son archivos que contienen los cambios que se han hecho en los modelos y que se deben aplicar al esquema de la base de datos. Las migraciones sirven para mantener sincronizados los modelos y la base de datos, facilitando el desarrollo y el despliegue de las aplicaciones.
 
 - ¿Qué es un middleware en Django y cómo se configura?
+
     Un middleware en Django es un componente que se engancha en el procesamiento de las peticiones y las respuestas, y que puede alterar la entrada o la salida de los endpoints. El middleware puede usarse para diversas funciones, como seguridad, sesión, protección CSRF y autenticación. Es un sistema de plugins ligero y de bajo nivel que se ejecuta en segundo plano.
 
     Para configurar el middleware en Django, hay que seguir estos pasos:
