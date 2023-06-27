@@ -1,8 +1,16 @@
 services:
-  web: 
+  web_migrate:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py migrate
     volumes:
     - .:/usr/src/app
+  web_makemigrations:
+    extends:
+      service: web_migrate
+    command: python manage.py makemigrations
+  web: 
+    extends:
+      service: web_makemigrations
+    command: python manage.py runserver 0.0.0.0:8000
     ports: 
       - '8000:8000'

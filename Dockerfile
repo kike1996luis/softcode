@@ -1,4 +1,5 @@
 FROM python:3.11.3-slim
+ENV PYTHONUNBUFFERED=1
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
