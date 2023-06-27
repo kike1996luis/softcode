@@ -4,11 +4,15 @@ Reto técnico para la empresa Softcode SL, el cual tiene como objetivo crear una
 # ¿En que consiste?
 
 • La prueba consta de dos partes: preguntas teóricas y ejercicios prácticos.
+
 • Se espera que el aspirante complete ambas partes de la prueba.
+
 • Se recomienda utilizar el entorno de desarrollo Django para resolver los ejercicios
 prácticos.
+
 • Puede utilizar cualquier recurso en línea, como la documentación oficial de Django,
 para ayudarle a completar la prueba.
+
 • Una vez que haya completado la prueba, envíe el código fuente y las respuestas a
 las preguntas teóricas en un enlace a un repositorio de Git.
 
