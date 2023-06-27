@@ -56,19 +56,20 @@ las preguntas teóricas en un enlace a un repositorio de Git.
 
     Ejemplo:
 
-    ```from django.db import models
+``` from django.db import models
 
     class Libro(models.Model):
-    isbn = models.CharField(max_length=13, primary_key=True) # Clave primaria
-    titulo = models.CharField(max_length=200)
-    autor = models.ForeignKey('Autor', on_delete=models.CASCADE) # Clave foránea
+        isbn = models.CharField(max_length=13, primary_key=True) # Clave primaria
+        titulo = models.CharField(max_length=200)
+        autor = models.ForeignKey('Autor', on_delete=models.CASCADE) # Clave foránea
 
     class Autor(models.Model):
-        nombre = models.CharField```
+        nombre = models.CharField
+```
 
 - ¿Qué son las migraciones en Django y para qué se utilizan?
 
-    Las migraciones en Django son archivos que contienen los cambios que se han hecho en los modelos y que se deben aplicar al esquema de la base de datos1. Las migraciones sirven para mantener sincronizados los modelos y la base de datos, facilitando el desarrollo y el despliegue de las aplicaciones.
+    Las migraciones en Django son archivos que contienen los cambios que se han hecho en los modelos y que se deben aplicar al esquema de la base de datos. Las migraciones sirven para mantener sincronizados los modelos y la base de datos, facilitando el desarrollo y el despliegue de las aplicaciones.
 
 - ¿Qué es un middleware en Django y cómo se configura?
     Un middleware en Django es un componente que se engancha en el procesamiento de las peticiones y las respuestas, y que puede alterar la entrada o la salida de los endpoints. El middleware puede usarse para diversas funciones, como seguridad, sesión, protección CSRF y autenticación. Es un sistema de plugins ligero y de bajo nivel que se ejecuta en segundo plano.
@@ -83,7 +84,7 @@ las preguntas teóricas en un enlace a un repositorio de Git.
 
     Ejemplo: 
     
-    ```class SimpleMiddleware:
+  ```class SimpleMiddleware:
         def __init__(self, get_response):
             self.get_response = get_response
             # Configuración e inicialización de una sola vez.
@@ -103,28 +104,28 @@ las preguntas teóricas en un enlace a un repositorio de Git.
 
 # Ejercicios prácticos
 
-    1. Crea un modelo llamado Producto que tenga los siguientes campos:
+1. Crea un modelo llamado Producto que tenga los siguientes campos:
     • nombre (cadena de caracteres)
     • precio (número decimal)
     • descripcion (texto largo)
     • fecha_publicacion (fecha y hora)
     • activo (booleano)
 
-    2. Crea una vista basada en clase que liste todos los productos en una página web.
+2. Crea una vista basada en clase que liste todos los productos en una página web.
     La vista debe mostrar el nombre y el precio de cada producto.
 
-    3. Crea una URL que mapee a la vista anterior y verifica que la lista de productos se
+3. Crea una URL que mapee a la vista anterior y verifica que la lista de productos se
     muestra correctamente en el navegador.
 
-    4. Agrega un formulario de creación de productos en la página de lista de productos.
+4. Agrega un formulario de creación de productos en la página de lista de productos.
     El formulario debe permitir al usuario ingresar el nombre, precio, descripción, fecha
     de publicación y estado del producto (activo/inactivo).
     
-    5. Crea una vista que muestre los detalles de un producto específico cuando se hace
+5. Crea una vista que muestre los detalles de un producto específico cuando se hace
     clic en su nombre en la lista de productos. La vista debe mostrar todos los campos
     del producto.
     
-    6. Agrega una URL que mapee a la vista de detalles del producto y verifica que los
+6. Agrega una URL que mapee a la vista de detalles del producto y verifica que los
     detalles se muestran correctamente en el navegador cuando se hace clic en un
     producto.
 
@@ -134,3 +135,39 @@ las preguntas teóricas en un enlace a un repositorio de Git.
 - django-bootstrap-v5
 - django-browser-reload
 - python-decouple
+
+# Desarrollo
+
+- Se usó la última versión de django actual (4.2.2) para el desarrollo del proyecto
+- Para el frontend se usó Bootstrap con los íconos de fontawesome 5 importados al proyecto, para ser utilizados en el proyecto.
+- Se decidió usar Docker para establecer la imagen en un contenedor y sea más fácil su uso en distintos sistemas.
+- La base de datos usada es SQLite3.
+- Se adaptaron 3 endpoints correspondientes a listar, detallar y crear productos.
+- Cada vista es basada en clase.
+- Se adaptaron tests unitarios para verificar el correcto funcionamiento del sistema.
+
+# Instalación
+
+- Por seguridad y para no mostrar datos sensibles a la hora de desplegar el código en GitHub, siguiendo parte de la metodología twelve-factor el archivo de configuración se establece con la variable de entorno de Django .env, el cuál está excluido del repositorio. Se debe crear el archivo .env en la raíz del proyecto y establecer tu SECRET_KEY para tu entorno, existe un archivo llamado .env.example de modo de ejemplo:
+
+```SECRET_KEY = '....your secret key ....'```
+
+- Para instalar el proyecto se usará Docker para hacer build de la imagen al contenedor.
+
+- Una vez tengas instalado y encendido el entorno de docker, vete a la raíz del proyecto y ejecuta este comando para instalar la imagen de Python 3.11.3 y cada dependencia necesaria en el proyecto:
+
+```docker compose build```
+
+- Cuando finalice la instalación ejecuta el siguiente comando para correr el servidor:
+
+```docker compose up```
+
+- Ya corriendo el servidor dirígete a [http://localhost:8000/](url) y verás la aplicación corriendo
+
+![image](https://github.com/kike1996luis/softcode/assets/44822982/5f29806b-def5-4984-9708-a09e1b5c2e4f)
+
+# Tests unitarios
+
+Este proyecto cuanto con un test unitario para verificar que el modelo de producto esté funcionando correctamente, para acceder a él solo ejecuta este comando:
+
+```docker compose run web python manage.py test apps.products.tests.TestProductCase.products_ut```
