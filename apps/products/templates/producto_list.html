@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+    <div class="row">
+        {% if productos %}
+            <div class="col-sm-12">
+                <h3>Lista de productos</h3> 
+                <table class="table table-bordered table-hover marg">
+                    <thead>
+                        <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Descripción</th>
+                        <th>Fecha de publicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in productos %} 
+                            <tr>
+                                <td><a href="{% url 'producto_detail' producto.pk %}">{{ producto.nombre }}</a></td>
+                                <td>{{ producto.precio }} $</td>
+                                <td>{{ producto.descripcion }}</td>
+                                <td>{{ producto.fecha_publicacion }}</td>
+                            </tr> 
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="col-sm-12 text-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/179/179386.png" class="marg fix-img">
+                <strong><h2>No tiene productos almacenados</h2></strong>
+            </div>
+        {% endif %}
+        
+        <div class="col-sm-12 text-center">
+            <button onclick="location.href='{% url 'producto_create' %}'" type="button" class="btn btn-outline-primary">
+                Crear nuevo producto 
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}

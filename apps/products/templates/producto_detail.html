@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="marg">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h4 class="modal-title">Detalles del producto</h4>
+        </div>
+  
+        <div class="modal-body">
+            <p><strong>Nombre: </strong>{{ producto.nombre }}</p>
+            <p><strong>Precio: </strong>{{ producto.precio }}</p>
+            <p><strong>Descripción: </strong>{{ producto.descripcion }}</p>
+            <p><strong>Fecha de publicación: </strong>{{ producto.fecha_publicacion }}</p>
+            <p><strong>Estado: </strong>
+                {% if producto.activo %}
+                    <strong style="color: green;">Activo</strong>
+                {% else %}
+                    <strong style="color: red;">Inactivo</strong>
+                {% endif %}
+            </p>
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" onclick="location.href='{% url 'producto_list' %}'" class="btn btn-danger" data-bs-dismiss="modal">Volver a la lista</button>
+        </div>
+  
+      </div>
+    </div>
+{% endblock %}

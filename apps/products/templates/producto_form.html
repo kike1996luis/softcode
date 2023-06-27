@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<div class="marg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Crear producto</h4>
+      </div>
+
+      <div class="modal-body"> 
+        <form method="post"> 
+            {% csrf_token %} 
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ form.as_p }}
+                </div>
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                </div>
+            </div>
+        </form> 
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" onclick="location.href='{% url 'producto_list' %}'" class="btn btn-danger" data-bs-dismiss="modal">Volver a la lista</button>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

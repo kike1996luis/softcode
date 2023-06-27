@@ -1,0 +1,24 @@
+<html>
+{% load django_browser_reload %}
+{% load static %}
+<link rel="stylesheet" type="css/text" href="{% static 'css/stylesheet.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+    <title>Softcode</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <div class="container" style="max-width: 100%;">
+        <ul class="nav bg-info">
+            <li class="nav-item">
+                <a class="nav-link link-light" href="/">HOME</a>
+                </li>
+            </li>
+        </ul>
+        
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
